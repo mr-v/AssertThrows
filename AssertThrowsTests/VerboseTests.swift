@@ -1,6 +1,6 @@
 //
-//  AssertThrows.h
-//  AssertThrows
+//  AssertThrowsTests.swift
+//  AssertThrowsTests
 //
 // Copyright (c) 2016 Witold Skibniewski (http://mr-v.github.io/)
 //
@@ -22,15 +22,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
-#import <UIKit/UIKit.h>
-
-//! Project version number for AssertThrows.
-FOUNDATION_EXPORT double AssertThrowsVersionNumber;
-
-//! Project version string for AssertThrows.
-FOUNDATION_EXPORT const unsigned char AssertThrowsVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <AssertThrows/PublicHeader.h>
+import XCTest
 
 
+class AssertThrowsTests: XCTestCase {
+    func test_throwOnUnkown_UnknownPassed_ThrowsAnyError() {
+        do {
+            try Movie().throwOnUnkown(.Unkown)
+            XCTFail()
+        } catch {
+
+        }
+    }
+
+    func test_throwOnUnkown_UnknownPassed_ThrowsTestError() {
+        do {
+            try Movie().throwOnUnkown(.Unkown)
+            XCTFail()
+        } catch {
+            guard let _ = error as? TestError else {
+                return XCTFail()
+            }
+        }
+    }
+
+    func test_throwOnUnkown_UnknownPassed_ThrowsIllegalArgument() {
+        do {
+            try Movie().throwOnUnkown(.Unkown)
+            XCTFail()
+        } catch {
+            guard let error = error as? TestError else {
+                return XCTFail()
+            }
+            XCTAssertEqual(TestError.IllegalArgument, error)
+        }
+    }
+}

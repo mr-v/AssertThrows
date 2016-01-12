@@ -1,5 +1,5 @@
 //
-//  AssertThrows.h
+//  TestHelpers.swift
 //  AssertThrows
 //
 // Copyright (c) 2016 Witold Skibniewski (http://mr-v.github.io/)
@@ -22,15 +22,44 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
-#import <UIKit/UIKit.h>
-
-//! Project version number for AssertThrows.
-FOUNDATION_EXPORT double AssertThrowsVersionNumber;
-
-//! Project version string for AssertThrows.
-FOUNDATION_EXPORT const unsigned char AssertThrowsVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <AssertThrows/PublicHeader.h>
+import Foundation
 
 
+enum MovieType {
+    case NewRelease, Children, Unkown
+}
+
+enum TestError: ErrorType {
+    case IllegalArgument
+    case NoLuck
+}
+
+enum AnotherTestError: ErrorType {
+    case WhatsUp
+}
+
+struct Movie {
+    func throwOnUnkown(type: MovieType) throws {
+        if type == .Unkown {
+            throw TestError.IllegalArgument
+        }
+    }
+
+    func throwsBaseError() throws {
+        throw WSBaseError(domain: "witold.skibniewski", code: 0, userInfo: nil)
+    }
+
+    func throwsDerivedError() throws {
+        throw WSDerivedError(domain: "witold.skibniewski", code: 1, userInfo: nil)
+    }
+
+
+    func dontThrow() {
+    }
+}
+
+class WSBaseError: NSError {
+}
+
+class WSDerivedError: WSBaseError {
+}

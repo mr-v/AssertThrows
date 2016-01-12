@@ -1,5 +1,5 @@
 //
-//  AssertThrows.h
+//  AssertThrowsFailingTestCase.swift
 //  AssertThrows
 //
 // Copyright (c) 2016 Witold Skibniewski (http://mr-v.github.io/)
@@ -22,15 +22,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import XCTest
+import AssertThrows
 
-#import <UIKit/UIKit.h>
-
-//! Project version number for AssertThrows.
-FOUNDATION_EXPORT double AssertThrowsVersionNumber;
-
-//! Project version string for AssertThrows.
-FOUNDATION_EXPORT const unsigned char AssertThrowsVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <AssertThrows/PublicHeader.h>
-
-
+/// Tests failing on purpose didn't figure out how to catch their failures.
+//class AssertThrowsFailingTestCase: XCTestCase {
+//    func test_NonDerivedTypeAssertionFails() {
+//        let movie = Movie()
+//        AssertThrows(WSDerivedError.self, try movie.throwsBaseError())
+//    }
+//
+//    func test_NotMatchingCaseFails() {
+//        let movie = Movie()
+//        AssertThrows(TestError.NoLuck, try movie.throwOnUnkown(.Unkown))
+//    }
+//
+//    func test_NotMatchingTypeFails() {
+//        let movie = Movie()
+//        AssertThrows(AnotherTestError.self, try movie.throwOnUnkown(.Unkown))
+//    }
+//
+//    func test_NotMatchingTypeAndCaseFails() {
+//        let movie = Movie()
+//        AssertThrows(AnotherTestError.WhatsUp, try movie.throwOnUnkown(.Unkown))
+//    }
+//
+//    func test_AssertThrows_CantAssertNonThrowingFunction() {
+//        let movie = Movie()
+//        AssertThrows(AnotherTestError.self, movie.dontThrow())
+//    }
+//}

@@ -1,5 +1,5 @@
 //
-//  AssertThrows.h
+//  AssertThrowsTestCase.swift
 //  AssertThrows
 //
 // Copyright (c) 2016 Witold Skibniewski (http://mr-v.github.io/)
@@ -22,15 +22,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import XCTest
+import AssertThrows
 
-#import <UIKit/UIKit.h>
+class AssertThrowsTestCase: XCTestCase {
+    func test_AssertsThrowingAnyError() {
+        let movie = Movie()
+        AssertThrows(try movie.throwOnUnkown(.Unkown))
+    }
 
-//! Project version number for AssertThrows.
-FOUNDATION_EXPORT double AssertThrowsVersionNumber;
+    func test_AssertsThrowingNSError() {
+        let movie = Movie()
+        AssertThrows(try movie.throwsBaseError())
+    }
 
-//! Project version string for AssertThrows.
-FOUNDATION_EXPORT const unsigned char AssertThrowsVersionString[];
+    func test_AssertsThrowingSpecificType() {
+        let movie = Movie()
+        AssertThrows(TestError.self, try movie.throwOnUnkown(.Unkown))
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <AssertThrows/PublicHeader.h>
+    func test_AssertThrows_ThrowingSpecificCaseOfType() {
+        let movie = Movie()
+        AssertThrows(TestError.IllegalArgument, try movie.throwOnUnkown(.Unkown))
+    }
 
+    func test_AssertsThrowingSpecificNSError_MatchesErrorClass() {
+        let movie = Movie()
+        AssertThrows(WSBaseError.self, try movie.throwsBaseError())
+    }
 
+    func test_AssertsThrowingSpecificNSError_MatchesDerivedClassWithSuperclass() {
+        let movie = Movie()
+        AssertThrows(WSBaseError.self, try movie.throwsDerivedError())
+    }
+}
