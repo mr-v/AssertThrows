@@ -1,5 +1,5 @@
 # AssertThrows
-Custom assertions for asserting throwing functions in Swift 2.x
+Custom assertions for asserting throwing functions in Swift 2.x. For more information see [blog post](http://mr-v.github.io/custom-error-assertions-in-swift/).
 
 ## Usage
 
