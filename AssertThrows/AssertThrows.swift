@@ -51,7 +51,7 @@ public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall
 /**
     Asserts that error of specific `Equatable` type has been thrown, e.g.
     - Swift enums with associated data,
-    - NSErrors where default equality check consists of checking `code`, `domain` and `userInfo`.
+    - `NSError`s, where default equality verification relies on checking `code`, `domain` and `userInfo` properties.
 */
 public func AssertThrows<T where T: Equatable, T: ErrorType>(expected: T, @autoclosure _ throwingCall: () throws -> Any, file: String = __FILE__, line: UInt = __LINE__) {
     do {
