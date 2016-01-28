@@ -39,10 +39,11 @@ enum AnotherTestError: ErrorType {
 }
 
 struct Movie {
-    func throwOnUnkown(type: MovieType) throws {
+    func throwOnUnkown(type: MovieType) throws -> Int {
         if type == .Unkown {
             throw TestError.IllegalArgument
         }
+        return 1
     }
 
     func throwsBaseError() throws {

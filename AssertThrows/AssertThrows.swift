@@ -27,7 +27,7 @@ import XCTest
 
 
 /// Asserts that error has been thrown.
-public func AssertThrows(@autoclosure throwingCall: () throws -> (), file: String = __FILE__, line: UInt = __LINE__) {
+public func AssertThrows(@autoclosure throwingCall: () throws -> Any, file: String = __FILE__, line: UInt = __LINE__) {
     do {
         try throwingCall()
         XCTFail("AssertThrows: No error thrown", file: file, line: line)
@@ -37,7 +37,7 @@ public func AssertThrows(@autoclosure throwingCall: () throws -> (), file: Strin
 }
 
 /// Asserts that error of specific type has been thrown.
-public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall: () throws -> (), file: String = __FILE__, line: UInt = __LINE__) {
+public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall: () throws -> Any, file: String = __FILE__, line: UInt = __LINE__) {
     do {
         try throwingCall()
         XCTFail("AssertThrows: No error thrown", file: file, line: line)
@@ -53,7 +53,7 @@ public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall
     - Swift enums with associated data,
     - NSErrors where default equality check consists of checking `code`, `domain` and `userInfo`.
 */
-public func AssertThrows<T where T: Equatable, T: ErrorType>(expected: T, @autoclosure _ throwingCall: () throws -> (), file: String = __FILE__, line: UInt = __LINE__) {
+public func AssertThrows<T where T: Equatable, T: ErrorType>(expected: T, @autoclosure _ throwingCall: () throws -> Any, file: String = __FILE__, line: UInt = __LINE__) {
     do {
         try throwingCall()
         XCTFail()
