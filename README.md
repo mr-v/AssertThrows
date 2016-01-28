@@ -1,3 +1,5 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 # AssertThrows
 Custom assertions for asserting throwing functions in Swift 2.x. For more information see [blog post](http://mr-v.github.io/custom-error-assertions-in-swift/).
 
