@@ -69,3 +69,23 @@ func test_throwOnUnkown_UnknownPassed_ThrowsIllegalArgument() {
     }
 }
 ```
+
+## Installation
+
+### CocoaPods
+
+In `Podfile` add AssertThrows to test target, e.g.
+
+```ruby
+target 'AppTests' do
+pod 'AssertThrows'
+end
+```
+
+### Carthage
+
+Add to `Cartfile`:
+
+`github "mr-v/AssertThrows"`
+
+Drag the built .framework binary into your application’s test target.
