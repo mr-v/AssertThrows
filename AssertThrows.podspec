@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.1"
   s.summary      = "Custom assertions for asserting throwing functions in Swift 2.x."
   s.description  = <<-DESC
-Fixes XCTest missing part. Custom assertions enable following throwing function assertions:
+Fixes XCTest's missing support for testing error handling in Swift 2.x. Custom assertions enable following throwing function assertions:
 1. Throws error.
 2. Throws specific ErrorType implementer.
 3. Throws specific case of ErrorType implementer.*
