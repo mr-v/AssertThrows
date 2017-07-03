@@ -34,17 +34,17 @@ import AssertThrows
 //
 //    func test_NotMatchingCaseFails() {
 //        let movie = Movie()
-//        AssertThrows(TestError.NoLuck, try movie.throwOnUnkown(.Unkown))
+//        AssertThrows(TestError.noLuck, try movie.throwOnUnkown(.unkown))
 //    }
 //
 //    func test_NotMatchingTypeFails() {
 //        let movie = Movie()
-//        AssertThrows(AnotherTestError.self, try movie.throwOnUnkown(.Unkown))
+//        AssertThrows(AnotherTestError.self, try movie.throwOnUnkown(.unkown))
 //    }
 //
 //    func test_NotMatchingTypeAndCaseFails() {
 //        let movie = Movie()
-//        AssertThrows(AnotherTestError.WhatsUp, try movie.throwOnUnkown(.Unkown))
+//        AssertThrows(AnotherTestError.whatsUp, try movie.throwOnUnkown(.unkown))
 //    }
 //
 //    func test_AssertThrows_CantAssertNonThrowingFunction() {

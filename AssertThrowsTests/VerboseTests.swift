@@ -28,7 +28,7 @@ import XCTest
 class AssertThrowsTests: XCTestCase {
     func test_throwOnUnkown_UnknownPassed_ThrowsAnyError() {
         do {
-            try Movie().throwOnUnkown(.Unkown)
+            _ = try Movie().throwOnUnkown(.unkown)
             XCTFail()
         } catch {
 
@@ -37,7 +37,7 @@ class AssertThrowsTests: XCTestCase {
 
     func test_throwOnUnkown_UnknownPassed_ThrowsTestError() {
         do {
-            try Movie().throwOnUnkown(.Unkown)
+            _ = try Movie().throwOnUnkown(.unkown)
             XCTFail()
         } catch {
             guard let _ = error as? TestError else {
@@ -48,13 +48,13 @@ class AssertThrowsTests: XCTestCase {
 
     func test_throwOnUnkown_UnknownPassed_ThrowsIllegalArgument() {
         do {
-            try Movie().throwOnUnkown(.Unkown)
+            _ = try Movie().throwOnUnkown(.unkown)
             XCTFail()
         } catch {
             guard let error = error as? TestError else {
                 return XCTFail()
             }
-            XCTAssertEqual(TestError.IllegalArgument, error)
+            XCTAssertEqual(TestError.illegalArgument, error)
         }
     }
 }

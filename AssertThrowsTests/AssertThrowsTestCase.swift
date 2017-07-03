@@ -28,7 +28,7 @@ import AssertThrows
 class AssertThrowsTestCase: XCTestCase {
     func test_AssertsThrowingAnyError() {
         let movie = Movie()
-        AssertThrows(try movie.throwOnUnkown(.Unkown))
+        AssertThrows(try movie.throwOnUnkown(.unkown))
     }
 
     func test_AssertsThrowingNSError() {
@@ -38,12 +38,12 @@ class AssertThrowsTestCase: XCTestCase {
 
     func test_AssertsThrowingSpecificType() {
         let movie = Movie()
-        AssertThrows(TestError.self, try movie.throwOnUnkown(.Unkown))
+        AssertThrows(TestError.self, try movie.throwOnUnkown(.unkown))
     }
 
     func test_AssertThrows_ThrowingSpecificCaseOfType() {
         let movie = Movie()
-        AssertThrows(TestError.IllegalArgument, try movie.throwOnUnkown(.Unkown))
+        AssertThrows(TestError.illegalArgument, try movie.throwOnUnkown(.unkown))
     }
 
     func test_AssertsThrowingSpecificNSError_MatchesErrorClass() {

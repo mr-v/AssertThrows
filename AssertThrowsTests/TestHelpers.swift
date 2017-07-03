@@ -26,22 +26,22 @@ import Foundation
 
 
 enum MovieType {
-    case NewRelease, Children, Unkown
+    case newRelease, children, unkown
 }
 
-enum TestError: ErrorType {
-    case IllegalArgument
-    case NoLuck
+enum TestError: Error {
+    case illegalArgument
+    case noLuck
 }
 
-enum AnotherTestError: ErrorType {
-    case WhatsUp
+enum AnotherTestError: Error {
+    case whatsUp
 }
 
 struct Movie {
-    func throwOnUnkown(type: MovieType) throws -> Int {
-        if type == .Unkown {
-            throw TestError.IllegalArgument
+    func throwOnUnkown(_ type: MovieType) throws -> Int {
+        if type == .unkown {
+            throw TestError.illegalArgument
         }
         return 1
     }

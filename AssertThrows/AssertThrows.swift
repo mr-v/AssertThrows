@@ -27,9 +27,9 @@ import XCTest
 
 
 /// Asserts that error has been thrown.
-public func AssertThrows(@autoclosure throwingCall: () throws -> Any, file: StaticString = #file, line: UInt = #line) {
+public func AssertThrows(_ throwingCall: @autoclosure () throws -> Any, file: StaticString = #file, line: UInt = #line) {
     do {
-        try throwingCall()
+        _ = try throwingCall()
         XCTFail("AssertThrows: No error thrown", file: file, line: line)
     } catch {
 
@@ -37,13 +37,13 @@ public func AssertThrows(@autoclosure throwingCall: () throws -> Any, file: Stat
 }
 
 /// Asserts that error of specific type has been thrown.
-public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall: () throws -> Any, file: StaticString = #file, line: UInt = #line) {
+public func AssertThrows<T: Error>(_ type: T.Type, _ throwingCall: @autoclosure () throws -> Any, file: StaticString = #file, line: UInt = #line) {
     do {
-        try throwingCall()
+        _ = try throwingCall()
         XCTFail("AssertThrows: No error thrown", file: file, line: line)
     } catch {
         guard error is T else {
-            return XCTFail("AssertThrows: (\"\(error.dynamicType)\") is not of type (\"\(T.self)\")", file: file, line: line)
+            return XCTFail("AssertThrows: (\"\(type(of: error))\") is not of type (\"\(T.self)\")", file: file, line: line)
         }
     }
 }
@@ -53,13 +53,13 @@ public func AssertThrows<T: ErrorType>(type: T.Type, @autoclosure _ throwingCall
     - Swift enums with associated data,
     - `NSError`s, where default equality verification relies on checking `code`, `domain` and `userInfo` properties.
 */
-public func AssertThrows<T where T: Equatable, T: ErrorType>(expected: T, @autoclosure _ throwingCall: () throws -> Any, file: StaticString = #file, line: UInt = #line) {
+public func AssertThrows<T>(_ expected: T, _ throwingCall: @autoclosure () throws -> Any, file: StaticString = #file, line: UInt = #line) where T: Equatable, T: Error {
     do {
-        try throwingCall()
+        _ = try throwingCall()
         XCTFail()
     } catch {
-        guard let castedError = error as? T where  expected == castedError else {
-            return XCTFail("AssertThrows: (\"\(expected.dynamicType) \(expected)\") is not equal to (\"\(error)\")", file: file, line: line)
+        guard let castedError = error as? T,  expected == castedError else {
+            return XCTFail("AssertThrows: (\"\(type(of: expected)) \(expected)\") is not equal to (\"\(error)\")", file: file, line: line)
         }
     }
 }
