@@ -1,7 +1,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # AssertThrows
-Custom assertions for unit testing throwing functions. Originally written for Swift 2. For more information see [blog post](http://mr-v.github.io/custom-error-assertions-in-swift/).
+Custom assertions for unit testing throwing functions. Originally written for Swift 2. For more information see [blog post](http://mr-v.github.io/custom-error-assertions-in-swift).
 
 ## Usage
 
